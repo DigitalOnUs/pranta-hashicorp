@@ -1,2 +1,2 @@
-# pranta-terraform
-terraform practice repo for pranta
+# pranta-hashicorp
+hashicorp practice repo for pranta
