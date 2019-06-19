@@ -23,16 +23,16 @@ vault secrets enable database
 #Configure MySQL roles and permissions
 mysql -u root -p
 CREATE ROLE 'dev-role';
-CREATE USER 'vault'@'<YourPublicIP>' IDENTIFIED BY 'AsYcUdOP426i';
+CREATE USER 'vault'@'98.248.138.235' IDENTIFIED BY 'AsYcUdOP426i';
 CREATE DATABASE devdb;
-GRANT ALL ON *.* TO 'vault'@'<YourPublicIP>';
-GRANT GRANT OPTION ON devdb.* TO 'vault'@'<YourPublicIP>';
+GRANT ALL ON *.* TO 'vault'@'98.248.138.235';
+GRANT GRANT OPTION ON devdb.* TO 'vault'@'98.248.138.235';
 
 #Change <MYSQL_IP> to the IP address of the MySQL server
 #Configure the MySQL plugin
 vault write database/config/dev-mysql-database \
     plugin_name=mysql-database-plugin \
-    connection_url="{{username}}:{{password}}@tcp(MY_SQL_IP:3306)/" \
+    connection_url="{{username}}:{{password}}@tcp(localhost:3306)/" \
     allowed_roles="dev-role" \
     username="vault" \
     password="AsYcUdOP426i"
